@@ -1,7 +1,17 @@
-let addMessage = document.querySelector('.message'),
-    addButton = document.querySelector('.add');
-todo =    document.querySelector('.todo');
+/**
+ * 1) Добавить функцию window onload
+ * 2) Написать функцию render и поместить её в window onload
+ * 3) вынести все addEventListener в отдельную функцию и вызвать после render
+ * 4) доработать addEventListener, вынести функцию отдельно от самого addEventListener
+ * 5) displayMessages переимновать в renderTodo и переделать в рендер 1 туду 'append() или appendChild()'
+ * 6) displayMessages сам сделать отдельно
+ * 7) функция удаления to-do из списка с обновлением HTML
+ * */
 
+
+let addMessage = document.querySelector('.message');
+let addButton = document.querySelector('.add');
+let todo = document.querySelector('.todo');
 let todoList = [];
 
 addButton.addEventListener('click',function () {
@@ -18,20 +28,20 @@ addButton.addEventListener('click',function () {
 
  function displayMessages() {
     let displayMessage = '';
-    todoList.forEach(function (item, i){
+    todoList.forEach(function (item, index){
         displayMessage += `
         <li>
-           <input type="checkbox" id='item_${i}' ${item.checked ? 'checked' : null}> 
-           <label for='item_${i}' class="${item.important ? 'important' : ''}" >${item.todo}</label>
-       </li>
-       `;
+           <input type="checkbox" id='item_${index}' ${item.checked ? 'checked' : null}> 
+           <label for='item_${index}' class="${item.important ? 'important' : null}" >${item.todo}</label>
+       </li>`;
         todo.innerHTML = displayMessage;
     });
  }
 
  todo.addEventListener('change',function (event){
-    let idInput = event.target.getAttibute('id');
+    // let idInput = event.target.getAttibute('id');
 
+    console.log("tut", event.target)
     todoList.forEach(function (item){
         if (item.todo === valueLabel){
             item.checked = !item.checked;
@@ -48,3 +58,6 @@ addButton.addEventListener('click',function () {
        }
    });
  });
+
+
+
