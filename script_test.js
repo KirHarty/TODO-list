@@ -8,13 +8,13 @@
  * 7) функция удаления to-do из списка с обновлением HTML
  */
 
-const form = document.getElementById('todo-input');
-const todoContainer = document.querySelector('.todo');
-let todoList = [];
-
 window.onload = () => {
+    const form = document.getElementById('todo-input');
+    const todoContainer = document.querySelector('.todo');
+    let todoList = [];
 
     function init () {
+        todoList = JSON.parse(localStorage.getItem('todoList')) || [];
         form.addEventListener('submit', (event) => addTodo(event));
 
     }
@@ -22,14 +22,32 @@ window.onload = () => {
     function addTodo(event) {  // добавить туду
         event.preventDefault();
 
-        let newTodo = {
-            task: event.target[0].value,
-            checked: false,
-            important: false
-        };
-        todoList.push(newTodo)
+        const input = event.target[0];
 
-        renderTodo();
+        if (input.value !== '') {
+            const taskData = {
+                id: Math.floor(Math.random() * 1000),
+                task: input.value,
+                checked: false,
+                important: false
+            };
+
+            todoList.push(taskData);
+            localStorage.setItem('todoList', JSON.stringify(todoList));
+            renderTodo(taskData);
+
+            input.value = '';
+        } else {
+            alert('введите туду');
+        }
+    }
+
+    function renderTodo(todoData) {
+        todoContainer.innerHTML += `
+         <div>
+           <input type="checkbox" id='item_${todoData.id}' ${todoData.checked ? 'checked' : null}> 
+           <label for='item_${todoData.id}' class="${todoData.important ? 'important' : null}">${todoData.task}</label>
+         </div>`
     }
 
     function removeTodo(todoID) { // удалить туду
@@ -40,112 +58,15 @@ window.onload = () => {
 
     }
 
-    function renderTodo(todoList) { // меняем статус туду
-
-        //
+    function renderTodoList(todos) {
+        if (todos.length > 0) {
+            todos.forEach(todo => {
+                renderTodo(todo);
+            })
+            console.warn('рендер туду из хранилища выполнен')
+        }
     }
 
     init();
+    renderTodoList(todoList);
 };
-
-   // addButton.addEventListener('click',function (){ form.addEventListener('submit', logSubmit);
-   //
-
-   //
-   //     console.log(newTodo);
-   //
-   //
-   // });
-
-/*
-
-  function subscribe (elements, action) {
-
-    function addTodo() {
-        const newTodo = {
-            todo: elements.addMessage.value,
-            checked: false,
-            important: false
-        };
-
-        //todoList.push(newTodo);
-    }
-
-    if (action === 'subscribe') {
-        elements.addButton.addEventListener('click', addTodo);
-    } else if (action === 'unsubscribe') {
-        elements.addButton.removeEventListener('click', addTodo);
-    }
-}
-
-function render() {
-    let addMessage = document.querySelector('.message');
-    let addButton = document.querySelector('.add');
-    let todo = document.querySelector('.todo');
-    let todoList = [];
-
-    subscribe({addMessage,addButton,todo}, 'subscribe');
-
-
-
-
-    function displayMessages() {
-        let displayMessage = '';
-        todoList.forEach(function (item, index){
-            displayMessage += `
-        <li>
-           <input type="checkbox" id='item_${index}' ${item.checked ? 'checked' : null}> 
-           <label for='item_${index}' class="${item.important ? 'important' : null}" >${item.todo}</label>
-       </li>`;
-            todo.innerHTML = displayMessage;
-        });
-    }
-
-
-
-}
-
-*/
-
-
-
-//    elements.todo.addEventListener('change',function (event){
-//         // let idInput = event.target.getAttibute('id');
-//
-//         console.log("tut", event.target)
-//         todoList.forEach(function (item){
-//             if (item.todo === valueLabel){
-//                 item.checked = !item.checked;
-//                 localStorage.setItem('todo',JSON.stringify(todoList));
-//             }
-//         })
-//     });
-//
-//     elements.todo.addEventListener('contextmenu', function (event){
-//         event.preventDefault();
-//         todoList.forEach(function (item){
-//             if (item.todo === event.target.innerHTML) {
-//                 item.important = !item.important;
-//             }
-//         });
-//
-//    });
-
-// const myEvent = {
-//     target: {
-//         value: 'pepega'
-//     }
-// }
-//
-// console.log(myEvent, 'создание и вызов своего объекта')
-
-
-
-/*
-* 1) Массивы и их методы
-* 2) Объекты и их методы
-* 3) Функции обычные и стрелочные(объявление функции),(аргументы фукнкий)!!!
-*   Идеально!!!!
-* 4)Операторы,операнды.
-
-* */
