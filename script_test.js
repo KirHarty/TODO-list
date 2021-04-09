@@ -8,23 +8,54 @@
  * 7) функция удаления to-do из списка с обновлением HTML
  */
 
+const form = document.getElementById('todo-input');
+const todoContainer = document.querySelector('.todo');
+let todoList = [];
 
+window.onload = () => {
 
-let addMessage = document.querySelector('.message');
-let addButton = document.querySelector('.add');
+    function init () {
+        form.addEventListener('submit', (event) => addTodo(event));
 
-   addButton.addEventListener('click',function (){
+    }
 
-       let newTodo = {
-           todo: addMessage.value,
-           checked: false,
-           important: false
-       };
+    function addTodo(event) {  // добавить туду
+        event.preventDefault();
 
-       console.log(newTodo);
+        let newTodo = {
+            task: event.target[0].value,
+            checked: false,
+            important: false
+        };
+        todoList.push(newTodo)
 
+        renderTodo();
+    }
 
-   });
+    function removeTodo(todoID) { // удалить туду
+
+    }
+
+    function toggleTodoStatus(todoID) { // меняем статус туду
+
+    }
+
+    function renderTodo(todoList) { // меняем статус туду
+
+        //
+    }
+
+    init();
+};
+
+   // addButton.addEventListener('click',function (){ form.addEventListener('submit', logSubmit);
+   //
+
+   //
+   //     console.log(newTodo);
+   //
+   //
+   // });
 
 /*
 
@@ -97,4 +128,24 @@ function render() {
 //                 item.important = !item.important;
 //             }
 //         });
-//     });
+//
+//    });
+
+// const myEvent = {
+//     target: {
+//         value: 'pepega'
+//     }
+// }
+//
+// console.log(myEvent, 'создание и вызов своего объекта')
+
+
+
+/*
+* 1) Массивы и их методы
+* 2) Объекты и их методы
+* 3) Функции обычные и стрелочные(объявление функции),(аргументы фукнкий)!!!
+*   Идеально!!!!
+* 4)Операторы,операнды.
+
+* */
