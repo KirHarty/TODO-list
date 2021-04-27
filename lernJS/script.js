@@ -1,5 +1,6 @@
-function watch(message) {
-      return message;
-}
+let user = {
+    name: "john",
+    age: 32
+};
 
-console.log()
+console.log(user);

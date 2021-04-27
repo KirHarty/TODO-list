@@ -50,9 +50,25 @@ window.onload = () => {
          </div>`
     }
 
-    function removeTodo(todoID) { // удалить туду
+   let ulList = document.getElementById('delTodo')
 
-    }
+    ulList.addEventListener('click', event => {
+        let el = event.target
+        if (ulList === el) return;
+        el.remove()
+    });
+
+
+
+
+
+
+
+
+
+//удаление
+    /*function removeTodo(id) {
+    }*/
 
     function toggleTodoStatus(todoID) { // меняем статус туду
 
