@@ -1,0 +1,46 @@
+<input id="num1" />
+
+<div id="operator_btns">
+    <button id="plus" class="operator" onclick="op='+'">+</button>
+    <button id="minus" class="operator" onclick="op='-'">-</button>
+    <button id="times" class="operator" onclick="op='*'">x</button>
+    <button id="divide" class="operator" onclick="op='/'">:</button>
+</div>
+
+<input id="num2" />
+
+<button onclick="func()">=</button>
+
+<p id="result"></p>
+
+
+<script>
+    let op;
+    function func() {
+        let result;
+        const num1 = Number(document.getElementById("num1").value);
+        const num2 = Number(document.getElementById("num2").value);
+        switch (op) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if (num2) {
+                    result = num1 / num2;
+                } else {
+                    result = 'бесконечность';
+                }
+                break;
+            default:
+                result = 'выберите операцию';
+        }
+
+        document.getElementById("result").innerHTML = result;
+    }
+</script>
