@@ -1,0 +1,63 @@
+body {
+    width: 1000px;
+    height: 1000px;
+    background-image: url("img/foto7.jpg");
+}
+img {
+    margin: 100px;
+    width: 300px;
+    height:auto;
+}
+.container1 {
+    display: flex;
+    justify-content:space-around;
+    width: auto;
+    flex-wrap: wrap;
+}
+.img1 {
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+
+}
+.text1 {
+    margin: 140px 220px 41px 428px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+}
+.skills {
+    width: 510px;
+    margin: 9px 32px 13px 335px;
+    padding: 0 20px;
+    background-color: white;
+    border-radius: 10px;
+
+}
+.skills p {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    margin: 0 0 0 5px;
+    text-transform: uppercase;
+}
+.imgs {
+    width: 510px;
+    margin: 9px 32px 13px 335px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+.imgs img {
+    width: 30%;
+    margin: 0 0 0 5px;
+}
+
+.info {
+ width: auto;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
