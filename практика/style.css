@@ -48,6 +48,7 @@ img {
     display: flex;
     justify-content: center;
 }
+
 .imgs img {
     width: 30%;
     margin: 0 0 0 5px;
@@ -58,7 +59,7 @@ img {
     height: 10%;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
 
 }
 .name  {
